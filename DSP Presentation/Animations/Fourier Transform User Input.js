@@ -1,8 +1,10 @@
 const USER = 0;
 const FOURIER = 1;
 
-let signal = [];
-let fourierSignal;
+let signalX = [];
+let signalY = [];
+let fourierSignalX;
+let fourierSignalY;
 
 let time = 0;
 let path = [];
@@ -12,7 +14,7 @@ let state = -1;
 function mousePressed() {
     state = USER;
     drawing = [];
-    signal = []; 
+    signalX = []; signalY = [];
     time = 0;
     path = [];
 }
@@ -22,13 +24,15 @@ function mouseReleased() {
 
     const skip = 1;
     for (let i = 0; i < drawing.length; i += skip) {
-        const c = new Complex (drawing[i].x, drawing[i].y);
-        signal.push(c);
+        signalX.push(drawing[i].x);
+        signalY.push(drawing[i].y);
     }
 
-    fourierSignal = dft(signal);
+    fourierSignalX = dft(signalX);
+    fourierSignalY = dft(signalY);
 
-    fourierSignal.sort((a, b) => b.amp - a.amp);
+    fourierSignalX.sort((a, b) => b.amp - a.amp);
+    fourierSignalY.sort((a, b) => b.amp - a.amp);
 }
 
 function setup() {
@@ -58,7 +62,8 @@ function epicycles (x, y, rotation, fourierTransform) {
 
 function draw() {
     background(0);
-    if (state == USER) {  
+    
+    if (state == USER) {
         let point = createVector(mouseX-width/2, mouseY-height/2);
         drawing.push(point);
 
@@ -70,17 +75,21 @@ function draw() {
         endShape();
 
     } else if (state == FOURIER) {
-        let v = epicycles (width/2, height/2, 0, fourierSignal);
+        let vx = epicycles (width/2, 100, 0, fourierSignalX);
+        let vy = epicycles (100, height/2, HALF_PI, fourierSignalY);
+        let v = createVector(vx.x, vy.y);
         path.unshift(v);
-
+        line(vx.x, vx.y, v.x, v.y);
+        line(vy.x, vy.y, v.x, v.y);
+        
         beginShape();
-        noFill(); strokeWeight(2);
+        noFill();
         for (let i = 0; i < path.length; i++) {
             vertex(path[i].x, path[i].y);
         }
         endShape();
 
-        const dt = TWO_PI / fourierSignal.length;
+        const dt = TWO_PI / fourierSignalY.length;
         time += dt;
 
         if (time > TWO_PI) {
