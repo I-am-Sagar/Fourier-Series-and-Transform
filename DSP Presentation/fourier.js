@@ -1,7 +1,12 @@
 class Complex {
-    constructor (a, b) {
-        this.real = a;
-        this.imag = b;
+    constructor (a, b = 0) {
+        if (b != 0) {
+            this.real = a;
+            this.imag = b;
+        } else {
+            a = cos(a);
+            b = sin(a);
+        }
     }
 
     add(c) {

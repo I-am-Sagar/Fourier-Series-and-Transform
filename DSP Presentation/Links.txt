@@ -22,8 +22,6 @@ https://www.youtube.com/playlist?list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW
 
 Git files: 
 
-Simple Sine: https://github.com/CardonaJD/fourierSeries
-
 Fourier Series: https://github.com/stellartux/CC125
 
 Fourier Transform: https://github.com/Jezzamonn/fourier
