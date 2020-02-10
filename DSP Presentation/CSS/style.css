@@ -107,7 +107,7 @@ main .heading h1 {
     font-size: 60px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 10px 10px;
-    margin: auto;
+    margin-top: 15px;
     position: absolute;
     left: 29%;
 
@@ -124,8 +124,8 @@ main img{
     margin: auto;
     position: absolute;
     left: 15%;
-    top: 12%;
-    width: 29%;
+    top: 18%;
+    width: 30%;
 }
 
 /* Button CSS */
