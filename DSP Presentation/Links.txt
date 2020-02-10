@@ -1,24 +1,9 @@
 The Coding Train:
 
-Fourier Series: 
-https://www.youtube.com/watch?v=Mm2eYfj0SgA
-
-Drawing with Fourier Transform:
-- https://www.youtube.com/watch?v=MY4luNgGfms
-- https://www.youtube.com/watch?v=n9nfTxp_APM
-- https://www.youtube.com/watch?v=7_vKzcgpfvU
-
-Drawing with Fourier Transform (Stream):
-https://www.youtube.com/watch?v=0b3R8oWffkw
-https://www.youtube.com/watch?v=-VfWfi7Goik (1 hr 13 min 15 sec)
-
-Fourier Series (Stream):
-https://www.youtube.com/watch?v=pKyU92cza0Y
-
 Sound Tutorials: 
 https://www.youtube.com/playlist?list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW
 
----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 Git files: 
 
@@ -30,6 +15,4 @@ Visualizing Fourier like 3B1B:
 - https://github.com/HarshuCogSci/visualizing-fourier
 - https://github.com/J-theta/fourier-transform
 
----------------------------------------------------------------------------------------------------
-
-
+--------------------------------------------------------------------------------

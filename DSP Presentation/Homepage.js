@@ -1,7 +1,7 @@
 // NOTE: This sketch doesn't require fourier.js
 
 let signal;
-let N = 2000;
+let N = 2500;
 // This is signal's length i.e. Number of input samples.
 // From SVG file, we will take only 'N' values. Increase N, for better path 
 // quality. But 2000 is enough. Increasing it further, increases render time.
@@ -19,7 +19,7 @@ let time = 0;
 let freq_array;     // Used while computing DFT
 
 let zoom;   // For zoom slider
-let speed;  // For speed slider
+let speed = 50;  // For speed slider
 
 var viewbox = {width: 1080};  // Used further while collecting signal from svg 
 var setupDone = false;  // Variable to check if setup() has completed or not
@@ -46,10 +46,10 @@ function mul([rea, ima], [reb, imb]) {
 async function setup() {
     createCanvas(1080, 720);
     zoom = createSlider(5,50,10);
-    speed = createSlider(1,50,1);
+    //speed = createSlider(1,50,1);
 
     // Getting SVG file
-    let svg = await fetch("./Assets/Batman_Logo.svg")
+    let svg = await fetch("./Assets/Fourier_sketch.svg")
         .then(response => response.text())
         .then(text => (new DOMParser).parseFromString(text, "image/svg+xml"))
         .then(svg => svg.documentElement);
@@ -58,11 +58,11 @@ async function setup() {
     // Get the SVG file's path. From that, get 'N' input samples, uniformly
     // spaced - so that the path is not distorted.
     let svg_path = svg.querySelector("path");
-    const svg_path_length = svg_path.getTotalLength()
+    const svg_path_length = svg_path.getTotalLength();
     signal = Array.from({length: N}, (_, i) => {
         const {x, y} = svg_path.getPointAtLength(i / N * svg_path_length);
         return [x - viewbox.width / 2, y - viewbox.height / 2];
-    })
+    });
     
     // Calculate DFT of signal here only
     freq_array = Int16Array.from({length: M}, (_, i) => (1 + i >> 1) * (i & 1 ? -1 : 1));
@@ -72,15 +72,15 @@ async function setup() {
             sum = add(sum, mul(signal[i], exp_im(k * i / N * 2 * -PI)));
         }
         return [sum[0] / N, sum[1] / N];
-    })
+    });
     //console.log(fourierSignal);
-    setupDone = true
+    setupDone = true;
 }
 
 function draw() {
     background(0);
 
-    if(setupDone){
+    if(setupDone) { 
         // Zooming
         const scale_value = zoom.value()/10 * width / viewbox.width;
         translate(width / 2, height / 2);
@@ -110,22 +110,22 @@ function draw() {
         stroke(125);
         for (let i = 0, p = [0, 0]; i < M; ++i) {
             prevP = p;
-            p = add(p, mul(fourierSignal[i], exp_im(a * freq_array[i])))
+            p = add(p, mul(fourierSignal[i], exp_im(a * freq_array[i])));
             line(...prevP, ...p);
         }
 
         // Draw the path.
         beginShape();
         noFill();
-        stroke(255)
-        strokeWeight(0.05); // strokeweight = 0.05 for Batman Logo
+        stroke(255);
+        strokeWeight(2); // strokeweight = 0.05 for Batman Logo
         if (path.length < q) path.push(p);
         for (let i = 1, n = path.length; i < n; ++i) {
             vertex(...path[i]);
         }
         endShape();
 
-        time += speed.value();
+        time += speed;
     }
 }
 
