@@ -11,8 +11,8 @@ body {
 /* CSS for Sidebar */
 .sidebar{
     position: fixed;
-    left: -250px;
-    width: 250px;
+    left: -200px;
+    width: 200px;
     height: 100%;
     background-color: #042331;
     transition: all 0.3s ease;
@@ -64,7 +64,7 @@ label #btn, label #cancel {
 
 label #btn {
     left: 40px;
-    top: 17px;
+    top: 15px;
     font-size: 35px;
     color: white;
     padding: 6px 12px;
@@ -72,7 +72,7 @@ label #btn {
 
 label #cancel {
     z-index: 1111;
-    left: -195px;
+    left: -150px;
     top: 17px;
     font-size: 30px;
     color: #0a5275;
@@ -84,17 +84,17 @@ label #cancel {
 }
 
 #check:checked ~ label #btn{
-    left: 250px;
+    left: 200px;
     opacity: 0;
     pointer-events: none;
 }
 
 #check:checked ~ label #cancel{
-    left: 195px;
+    left: 150px;
 }
 
 #check:checked ~ section{
-    margin-left: 250px;
+    margin-left: 200px;
 }
 
 /* Heading CSS */
@@ -124,14 +124,16 @@ main img{
     margin: auto;
     position: absolute;
     left: 15%;
-    top: 10%;
-    width: 480px;
+    top: 12%;
+    width: 29%;
 }
 
 /* Button CSS */
 main button {
-    border: 1px solid #0a5275;
-    background: #0a5275;
+    border: 1px solid #063146;
+    border-radius: 15px;
+    background: #063146;
+    box-shadow: 2px 2px #0a5275;
     font-size: 24px;
     font-family: "montserrat";
     color: white;
@@ -146,6 +148,6 @@ main button {
 }
 
 main button:hover {
-    border: 1px solid #063146;
-    background: #063146;
+    border: 1px solid #042331;
+    background: #042331;
 }
