@@ -18,7 +18,7 @@ let path = [];
 let time = 0;
 let freq_array;     // Used while computing DFT
 
-let zoom;   // For zoom slider
+let zoom = 6;   // For zoom slider
 let speed = 50;  // For speed slider
 
 var viewbox = {width: 1080};  // Used further while collecting signal from svg 
@@ -44,9 +44,9 @@ function mul([rea, ima], [reb, imb]) {
 }
 
 async function setup() {
-    createCanvas(1080, 720);
-    zoom = createSlider(5,50,10);
-    //speed = createSlider(1,50,1);
+    createCanvas(windowWidth, windowHeight);
+    // zoom = createSlider(5,50,10);
+    // speed = createSlider(1,50,1);
 
     // Getting SVG file
     let svg = await fetch("./Assets/Fourier_sketch.svg")
@@ -82,8 +82,8 @@ function draw() {
 
     if(setupDone) { 
         // Zooming
-        const scale_value = zoom.value()/10 * width / viewbox.width;
-        translate(width / 2, height / 2);
+        const scale_value = zoom/10 * width / viewbox.width;
+        translate(width / 1.5, height / 2);
         scale(scale_value);
 
         // Calculate the current point.
@@ -119,14 +119,16 @@ function draw() {
         noFill();
         stroke(255);
         strokeWeight(2); // strokeweight = 0.05 for Batman Logo
-        if (path.length < q) path.push(p);
+        if (path.length < q) 
+            path.push(p);
         for (let i = 1, n = path.length; i < n; ++i) {
             vertex(...path[i]);
         }
         endShape();
-
+    
         time += speed;
     }
+    path.unshift();
 }
 
 function keyPressed() {
