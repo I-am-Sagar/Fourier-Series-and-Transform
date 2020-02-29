@@ -1,0 +1,19 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    background-color: #262626;
+    display: block;
+}
+ul.toolbar li{
+    float: left;
+}
+
+ul.toolbar li button {
+    background-color: #262626;
+    border-width: 0px;
+    color: white;
+    padding: 0.8em 1.2em 0.8em 1.2em;
+}
+ul.toolbar li button:hover {
+    background-color: #000000;
+}
