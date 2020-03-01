@@ -1,0 +1,44 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    background-color: #262626;
+    display: block;
+    overflow: hidden;
+}
+ul.toolbar li{
+    float: left;
+}
+
+ul.toolbar li button {
+    background-color: #262626;
+    border-width: 0px;
+    color: white;
+    padding: 0.8em 1.2em 0.8em 1.2em;
+    font-size: large;
+}
+ul.toolbar li button:hover {
+    background-color: #000000;
+}
+
+ul.toolbar li input {
+    padding: 0.8em 1.2em 0.8em 1.2em;
+    margin-bottom: 1.2em;
+    appearance: none;
+    width: 75%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+}
+ul.toolbar li input:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+    cursor: pointer; /* Cursor on hover */
+}
+
+ul.toolbar li label {
+    background-color: #262626;
+    border-width: 0px;
+    color: white;
+    padding: 0.8em 1.2em 0.8em 1.2em;
+    font-size: x-large;
+}
