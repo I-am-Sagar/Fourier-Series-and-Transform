@@ -19,7 +19,7 @@ function setup() {
 
 function draw() {
     if (state == 0) {
-        background(0);
+        background(20);
     } else if (state == 1) {
         singlePhasor();
     } else if (state == 2) {
