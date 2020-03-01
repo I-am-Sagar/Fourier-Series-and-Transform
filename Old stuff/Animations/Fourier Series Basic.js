@@ -3,7 +3,7 @@ let wave = [];
 let slider;
 
 function setup() {
-    let cnv = createCanvas(600, 400);
+    let cnv = createCanvas(700, 400);
     cnv.style('display', 'block');
     cnv.parent('canvas');
     slider = createSlider(1, 10, 1);
@@ -11,7 +11,7 @@ function setup() {
 }
 
 function windowResized() {
-    resizeCanvas(600,400);
+    resizeCanvas(720,480);
 }
 
 function draw() {
@@ -19,7 +19,9 @@ function draw() {
     translate(150, 200);
 
     let x = 0, y = 0;
-    
+    stroke(255, 150);
+    line (x+200, -120, x+200, 120)
+
     for (let i = 0; i < slider.value(); i++) {
         let prevx = x;
         let prevy = y;
@@ -35,13 +37,18 @@ function draw() {
 
         stroke(255);
         line(prevx, prevy, x, y);
-    }
 
+        //fill(255);
+        
+    }
+    ellipse(200, y, 5)
     wave.unshift(y);
     translate(200, 0);
+    stroke(255, 100)
     line(x-200, y, 0, wave[0]);
     beginShape();
     noFill();
+    stroke(255);
     for (let i = 0; i < wave.length; i++) {
         vertex(i, wave[i]);
     }
@@ -49,7 +56,7 @@ function draw() {
 
     time += 0.03;
 
-    if (wave.length > 250){
+    if (wave.length > 300){
         wave.pop();
     }
 }   
