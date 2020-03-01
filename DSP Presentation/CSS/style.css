@@ -55,7 +55,7 @@ ul li:hover a{
 }
 
 label #btn, label #cancel {
-    position: absolute;
+    position: fixed;
     cursor: pointer;
     background-color: #042331;
     border-radius: 3px;
@@ -140,8 +140,8 @@ main button {
     cursor: pointer;
     transition: 0.3s ease;
 
-    margin: 10px;
-    padding: 10px 20px;
+    margin: 8px;
+    padding: 8px 16px;
     position: absolute;
     top: 87%;
     left: 45%;
