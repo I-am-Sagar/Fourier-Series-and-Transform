@@ -3,6 +3,7 @@ html, body {
     margin: 0px;
     background-color: #262626;
     display: block;
+    overflow: hidden;
 }
 ul.toolbar li{
     float: left;
