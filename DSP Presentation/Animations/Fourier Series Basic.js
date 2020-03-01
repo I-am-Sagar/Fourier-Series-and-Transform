@@ -3,8 +3,15 @@ let wave = [];
 let slider;
 
 function setup() {
-    createCanvas(600, 400);
+    let cnv = createCanvas(windowWidth, windowHeight);
+    cnv.style('display', 'block');
+    cnv.parent('canvas');
     slider = createSlider(1, 10, 1);
+    slider.parent('control');
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth,windowHeight);
 }
 
 function draw() {
