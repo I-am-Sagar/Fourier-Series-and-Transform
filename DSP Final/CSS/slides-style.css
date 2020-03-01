@@ -1,0 +1,127 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+* {
+    background-color: black; margin: 0; padding: 0; list-style: None; 
+    text-decoration: none; /*overflow-y: hidden;*/
+}
+
+/* CSS for Sidebar */
+.sidebar{
+    position: fixed; left: -200px; width: 200px; height: 100%;
+    background-color: #042331; transition: all 0.3s ease;
+}
+
+.sidebar header{
+    font-size: 30px; color: white; text-align: center; line-height: 70px;
+    background-color: #063146; user-select: none;
+}
+
+.sidebar ul a{
+    background-color: #042331; display: block;
+    height: 100%; width: 100%; line-height: 60px;
+    font-size: 20px; color: white; 
+    padding-left: 40px; box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, .1); border-bottom: 1px solid black;
+    transition: 0.3s;
+}
+
+.sidebar ul li:hover a{
+    padding-left: 55px;
+}
+
+.sidebar ul a i {
+    background-color: #042331; margin-right: 16px;
+}
+
+#check {
+    display: none;
+}
+
+label #btn, label #cancel {
+    position: fixed; cursor: pointer; background-color: #042331;
+    border-radius: 3px; transition: all 0.3s ease;
+}
+
+label #btn {
+    left: 40px; top: 15px; font-size: 35px; color: white; padding: 6px 12px;
+}
+
+label #cancel {
+    z-index: 1111; left: -150px; top: 17px; font-size: 30px; color: #0a5275;
+    padding: 4px 9px;
+}
+
+#check:checked ~.sidebar{
+    left: 0;
+}
+
+#check:checked ~ label #btn{
+    left: 200px; opacity: 0; pointer-events: none;
+}
+
+#check:checked ~ label #cancel{
+    left: 150px;
+}
+
+#check:checked ~ section{
+    margin-left: 200px;
+}
+
+/* Heading CSS */
+main .heading {
+    background-color: black;
+}
+
+main .heading h1 {
+    color: white; font-size: 60px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10px 10px; margin-top: 15px; position: absolute; left: 29%;
+
+    text-shadow: 
+        2px 2px #0a5275,
+        3px 3px #0a5275,
+        4px 4px #0a5275;
+}
+
+/* Button Group */
+.button-group-1 ul {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: 33%;
+    bottom: 8%;
+}
+
+.button-group-1 ul li {
+    display: inline;
+    padding: 22px;
+}
+
+.button-group-1 ul li button {
+    border: 1px solid #063146; border-radius: 10px; background: #063146;
+    padding: 5px;
+    box-shadow: 2px 2px #0a5275; font-size: 24px; font-family: "montserrat";
+    color: white; cursor: pointer;
+    transition: 0.3s ease;    
+}
+
+.button-group-1 ul li button:hover {
+    border: 1px solid #042331;
+    background: #042331;
+}
+
+/* Canvas 1*/ 
+main #canvas-1 {
+    padding: 0;
+    margin: auto;
+    display: block;
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
