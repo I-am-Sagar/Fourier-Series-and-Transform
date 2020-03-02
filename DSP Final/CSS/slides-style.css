@@ -3,7 +3,7 @@ body {
 }
 * {
     background-color: black; margin: 0; padding: 0; list-style: None; 
-    text-decoration: none; /*overflow-y: hidden;*/
+    text-decoration: none; 
 }
 
 /* CSS for Sidebar */
@@ -112,16 +112,62 @@ main .heading h1 {
     background: #042331;
 }
 
+.button-group-2 ul {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: 40%;
+    bottom: 8%;
+}
+
+.button-group-2 ul li {
+    display: inline;
+    padding: 22px;
+}
+
+.button-group-2 ul li button {
+    border: 1px solid #063146; border-radius: 10px; background: #063146;
+    padding: 5px;
+    box-shadow: 2px 2px #0a5275; font-size: 24px; font-family: "montserrat";
+    color: white; cursor: pointer;
+    transition: 0.3s ease;    
+}
+
+.button-group-2 ul li button:hover {
+    border: 1px solid #042331;
+    background: #042331;
+}
+
 /* Canvas 1*/ 
 main #canvas-1 {
     padding: 0;
     margin: auto;
     display: block;
-    width: 800px;
-    height: 540px;
+    width: 900px;
+    height: 500px;
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 0px;
+    bottom: -1%;
     left: 0;
     right: 0;
 }
+
+/* Control positioning*/
+.control {
+    position: absolute;
+    top: 15%;
+    left: 35%;
+}
+
+.control label{
+    color: white;
+    font-size: 24px;
+    margin: auto;
+    padding: 20px;
+}
+
+.control input {
+
+}
+
