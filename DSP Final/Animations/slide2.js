@@ -13,7 +13,7 @@ function preload() {
 function setup() {
     let myCanvas = createCanvas(900, 460);
     myCanvas.style('display', 'block');
-    myCanvas.parent('canvas-2');
+    myCanvas.parent('canvas-1');
 
     document.getElementById('squareWave').onclick = e => {
         state = 1;

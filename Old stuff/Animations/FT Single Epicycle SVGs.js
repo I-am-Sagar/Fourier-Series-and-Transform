@@ -1,5 +1,3 @@
-// NOTE: This sketch doesn't require fourier.js
-
 let signal;
 let N = 2000;
 // This is signal's length i.e. Number of input samples.

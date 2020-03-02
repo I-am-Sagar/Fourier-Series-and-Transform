@@ -21,8 +21,9 @@ let speed;  // For speed slider
 
 var viewbox = {width: 1080};  // Used further while collecting signal from svg 
 var setupDone = false;  // Variable to check if setup() has completed or not
-var follow = false;  // Variable to set whether to follow drawing vertex or not
+var follow = true;  // Variable to set whether to follow drawing vertex or not
 var width = 1080;   // Width used as reference for zoom slider's values
+var checkboxVal;
 
 // Some basic Complex functions
 function aabs([re, im]) {   
@@ -41,13 +42,24 @@ function mul([rea, ima], [reb, imb]) {
     return [rea * reb - ima * imb, rea * imb + ima * reb];
 }
 
+function preload() {
+    checkboxVal = document.getElementById('toggle');
+    checkboxVal.checked = true;
+}
+
 async function setup() {
     let myCanvas = createCanvas(1080, 600);
     myCanvas.style('display', 'block');
     myCanvas.parent('canvas-2');
 
+    zoom = createSlider(5,50,50,5);
+    zoom.parent('zoom');
+
+    speed = createSlider(0,50,0);
+    speed.parent('speed');  
+
     // Getting SVG file
-    let svg = await fetch("./Assets/Batman_Logo.svg")
+    let svg = await fetch("../Assets/Batman_Logo.svg")
         .then(response => response.text())
         .then(text => (new DOMParser).parseFromString(text, "image/svg+xml"))
         .then(svg => svg.documentElement);
@@ -73,10 +85,15 @@ async function setup() {
     });
     //console.log(fourierSignal);
     setupDone = true;
+
+    document.getElementById('toggle').onclick = e => {
+        // checkboxVal = document.getElementById('toggle');
+        follow = !follow;
+    }
 }
 
 function draw() {
-    background(20);
+    background(0);
 
     if(setupDone) { 
         // Zooming
@@ -97,7 +114,7 @@ function draw() {
         }
         
         // Draw circles.
-        noFill(); stroke(255, 100);
+        noFill(); stroke(10, 82, 117, 200); strokeWeight(0.02);
         for (let i = 0, p = [0, 0]; i < M; ++i) {
             const r = aabs(fourierSignal[i]);
             ellipse(p[0], p[1],r*2);
@@ -127,8 +144,8 @@ function draw() {
     }
 }
 
-function keyPressed() {
-    if (key == "q" || key == "Q") {
-        follow = !follow;
-    }
-}
+// function keyPressed() {
+//     if (key == "q" || key == "Q") {
+//         follow = !follow;
+//     }
+// }
