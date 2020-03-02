@@ -144,3 +144,10 @@ main #canvas-1 {
 #toggle {
     width: 20px; height: 20px;
 }
+
+/* IFrame */
+
+.frame iframe {
+    position: fixed; top: 12%; left: 5%; z-index: -1;
+    height: 90%; width: 90%;
+}
