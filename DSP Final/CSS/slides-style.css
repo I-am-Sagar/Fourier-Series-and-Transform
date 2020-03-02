@@ -148,6 +148,6 @@ main #canvas-1 {
 /* IFrame */
 
 .frame iframe {
-    position: fixed; top: 12%; left: 5%; z-index: -1;
+    position: fixed; top: 12.5%; left: 5%; z-index: -1;
     height: 90%; width: 90%;
 }

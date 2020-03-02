@@ -4,7 +4,7 @@ var cartesian_graph = {};
 // Create
 
 cartesian_graph.createCanvasElements = function(){
-  cartesian_graph.width = 0.9*canvas_width, cartesian_graph.height = 0.24*canvas_height;
+  cartesian_graph.width = 0.9*canvas_width, cartesian_graph.height = 0.238*canvas_height;
   // var tempX = 0.05*canvas_width, tempY = 0.5*cartesian_graph.height + 20;
   var tempX = 0.05*canvas_width, tempY = 1*cartesian_graph.height + 10;
   cartesian_graph.origin =  d3.select('#canvas').append('g').attrs({ transform: 'translate(' +tempX+ ',' +tempY+ ')' });
