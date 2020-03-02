@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>fourier</title>
+    <script src="p5/p5.js"></script>
+    <script src="p5/p5.sound.js"></script>
+    <link rel="stylesheet" href="CSS/style_test.css">
+    <script src="Animations/audio.js"></script>
+  </head>
+  <body>
+    <ul style="list-style-type: none;" class="toolbar">
+      <li><label>Frequency</label></li>
+      <li> <input type="range" id="tuning" min='0' max='600' value="300" step='1' class='slider'></li>
+      <li><label>Resolution</label></li>
+      <li> <input type="range" id="band" min='0' max='100' value="75" step='1' class='slider'></li>
+  </ul>
+  <div id='canvas'></div>
+  </body>
+</html>
