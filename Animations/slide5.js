@@ -1,7 +1,5 @@
-// NOTE: This sketch doesn't require fourier.js
-
 let signal;
-let N = 2500;
+let N = 2000;
 // This is signal's length i.e. Number of input samples.
 // From SVG file, we will take only 'N' values. Increase N, for better path 
 // quality. But 2000 is enough. Increasing it further, increases render time.
@@ -18,13 +16,14 @@ let path = [];
 let time = 0;
 let freq_array;     // Used while computing DFT
 
-let zoom = 6;   // For zoom slider
-let speed = 50;  // For speed slider
+let zoom;   // For zoom slider
+let speed;  // For speed slider
 
 var viewbox = {width: 1080};  // Used further while collecting signal from svg 
 var setupDone = false;  // Variable to check if setup() has completed or not
-var follow = false;  // Variable to set whether to follow drawing vertex or not
+var follow = true;  // Variable to set whether to follow drawing vertex or not
 var width = 1080;   // Width used as reference for zoom slider's values
+var checkboxVal;
 
 // Some basic Complex functions
 function aabs([re, im]) {   
@@ -43,19 +42,24 @@ function mul([rea, ima], [reb, imb]) {
     return [rea * reb - ima * imb, rea * imb + ima * reb];
 }
 
-// Main functions
-
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+function preload() {
+    checkboxVal = document.getElementById('toggle');
+    checkboxVal.checked = true;
 }
 
 async function setup() {
-    createCanvas(windowWidth, windowHeight);
-    // zoom = createSlider(5,50,10);
-    // speed = createSlider(1,50,1);
+    let myCanvas = createCanvas(1080, 600);
+    myCanvas.style('display', 'block');
+    myCanvas.parent('canvas-2');
+
+    zoom = createSlider(5,50,50,5);
+    zoom.parent('zoom');
+
+    speed = createSlider(0,50,0);
+    speed.parent('speed');  
 
     // Getting SVG file
-    let svg = await fetch("./Assets/Fourier_sketch.svg")
+    let svg = await fetch("../Assets/Batman_Logo.svg")
         .then(response => response.text())
         .then(text => (new DOMParser).parseFromString(text, "image/svg+xml"))
         .then(svg => svg.documentElement);
@@ -81,6 +85,11 @@ async function setup() {
     });
     //console.log(fourierSignal);
     setupDone = true;
+
+    document.getElementById('toggle').onclick = e => {
+        // checkboxVal = document.getElementById('toggle');
+        follow = !follow;
+    }
 }
 
 function draw() {
@@ -88,8 +97,8 @@ function draw() {
 
     if(setupDone) { 
         // Zooming
-        const scale_value = zoom/10 * width / viewbox.width;
-        translate(width / 1.5, height / 2);
+        const scale_value = zoom.value()/10 * width / viewbox.width;
+        translate(width / 2, height / 2);
         scale(scale_value);
 
         // Calculate the current point.
@@ -105,7 +114,7 @@ function draw() {
         }
         
         // Draw circles.
-        noFill(); stroke(255, 100);
+        noFill(); stroke(10, 82, 117, 200); strokeWeight(0.02);
         for (let i = 0, p = [0, 0]; i < M; ++i) {
             const r = aabs(fourierSignal[i]);
             ellipse(p[0], p[1],r*2);
@@ -124,21 +133,13 @@ function draw() {
         beginShape();
         noFill();
         stroke(255);
-        strokeWeight(2); // strokeweight = 0.05 for Batman Logo
-        if (path.length < q) 
-            path.push(p);
+        strokeWeight(0.05); // strokeweight = 0.05 for Batman Logo
+        if (path.length < q) path.push(p);
         for (let i = 1, n = path.length; i < n; ++i) {
             vertex(...path[i]);
         }
         endShape();
-    
-        time += speed;
-    }
-    path.unshift();
-}
 
-// function keyPressed() {
-//     if (key == "q" || key == "Q") {
-//         follow = !follow;
-//     }
-// }
+        time += speed.value();
+    }
+}

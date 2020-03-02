@@ -51,4 +51,3 @@ function dft (x) {
     }
     return X;
 }
-
