@@ -1,0 +1,8 @@
+FOURIER
+
+Goal:
+  - To recreate the tool used by 3Blue1Brown
+
+Things to code
+  - Refactor the code
+  - Recreate the changing winding frequency animation
