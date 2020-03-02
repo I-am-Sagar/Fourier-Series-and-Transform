@@ -11,7 +11,7 @@ function preload() {
 }
 
 function setup() {
-    let myCanvas = createCanvas(900, 600);
+    let myCanvas = createCanvas(900, 460);
     myCanvas.style('display', 'block');
     myCanvas.parent('canvas-1');
 
@@ -26,18 +26,22 @@ function setup() {
     }
     document.getElementById('toggle').onclick = e => {
         checkboxVal = document.getElementById('toggle');
-        if (checkboxVal.checked === true) {
-            console.log("ON");
-        } else {
-            console.log("OFF");
-        }
+        // if (checkboxVal.checked === true) {
+        //     console.log("ON");
+        // } else {
+        //     console.log("OFF");
+        // }
     }
 }
 
 function draw() {
-    if (state == 0) {
-        background(20);
-    } else if (state == 1) {
+    background(0); translate(180, 230); stroke(255, 150);
+    line (250, 0, 650, 0);      
+    line (300, -180, 300, 180);   
+    line (-170, 0, 170, 0);     
+    line (0, -170, 0, 170);  
+
+    if (state == 1) {
         squareWave();
     } else if (state == 2) {
         sawtoothWave();
@@ -46,25 +50,16 @@ function draw() {
 
 function keyPressed() {
     if (key == 'q' || key == 'Q') {
-        time = 0;
-        wave = [];  
-        state = 0;
+        time = 0; wave = []; state = 0;
     }
 }
 
 function squareWave() {
-    background(20); translate(180, 300);
-
     var x_pos = 0, x_neg = 0, y = 0;
-    stroke(255, 150);
-    line (250, 0, 650, 0);      
-    line (x_pos+300, -180, x_pos+300, 180);   
-    line (-170, 0, 170, 0);     
-    line (0, -170, 0, 170);     
 
     for (let i = 0; i < sliderVal; i++) {
-        var prevx = x_pos, prevy = y; 
-        var n = 2*i+1;
+        // value of n comes from fourier formula
+        var prevx = x_pos, prevy = y, n = 2*i+1; 
 
         if (checkboxVal.checked === true) {
             radius = 100*(2/(n*PI));
@@ -76,9 +71,7 @@ function squareWave() {
         x_neg = -x_pos;
         y += radius*sin(n*time);
 
-        stroke(10, 82, 117, 150);
-        strokeWeight(2);
-        noFill();
+        stroke(10, 82, 117, 150); strokeWeight(2); noFill();
         ellipse (prevx, prevy, radius*2);
 
         if (checkboxVal.checked === true) {
@@ -95,6 +88,7 @@ function squareWave() {
         fill(10, 82, 117); stroke(10, 82, 117, 150);
         ellipse(x_pos, y, 6);
     }
+
     fill(255); 
     if (checkboxVal.checked === true) {
         ellipse(0, 2*y, 6);      
@@ -108,8 +102,7 @@ function squareWave() {
 
     translate(300, 0);
     beginShape();
-    noFill();
-    stroke(255);
+    noFill(); stroke(255);
     for (let i = 0; i < wave.length; i++) {
         vertex(i, wave[i]);
     }
@@ -123,18 +116,10 @@ function squareWave() {
 }
 
 function sawtoothWave() {
-    background(0); translate(180, 300);
-
     var x_pos = 0, x_neg = 0, y = 0;
-    stroke(255, 150);
-    line (250, 0, 650, 0);      
-    line (x_pos+300, -180, x_pos+300, 180);   
-    line (-170, 0, 170, 0);     
-    line (0, -170, 0, 170);     
 
     for (let i = 0; i < sliderVal; i++) {
-        var prevx = x_pos, prevy = y; 
-        var n = i+1;
+        var prevx = x_pos, prevy = y, n = i+1;
 
         if (checkboxVal.checked === true) {
             radius = 60*(2/(n*PI));
@@ -146,9 +131,7 @@ function sawtoothWave() {
         x_neg = -x_pos;
         y += radius*sin(n*time);
 
-        stroke(10, 82, 117, 150);
-        strokeWeight(2);
-        noFill();
+        stroke(10, 82, 117, 150); strokeWeight(2); noFill();
         ellipse (prevx, prevy, radius*2);
 
         if (checkboxVal.checked === true) {
@@ -165,6 +148,7 @@ function sawtoothWave() {
         fill(10, 82, 117); stroke(10, 82, 117, 150);
         ellipse(x_pos, y, 6);
     }
+
     fill(255); 
     if (checkboxVal.checked === true) {
         ellipse(0, 2*y, 6);      
@@ -178,8 +162,7 @@ function sawtoothWave() {
 
     translate(300, 0);
     beginShape();
-    noFill();
-    stroke(255);
+    noFill(); stroke(255);
     for (let i = 0; i < wave.length; i++) {
         vertex(i, wave[i]);
     }

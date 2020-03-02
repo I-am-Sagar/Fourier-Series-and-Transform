@@ -3,7 +3,7 @@ body {
 }
 * {
     background-color: black; margin: 0; padding: 0; list-style: None; 
-    text-decoration: none; 
+    text-decoration: none; overflow: hidden;
 }
 
 /* CSS for Sidebar */
@@ -79,95 +79,68 @@ main .heading h1 {
     padding: 10px 10px; margin-top: 15px; position: absolute; left: 29%;
 
     text-shadow: 
-        2px 2px #0a5275,
-        3px 3px #0a5275,
-        4px 4px #0a5275;
+        2px 2px #0a5275, 3px 3px #0a5275, 4px 4px #0a5275;
 }
 
 /* Button Group */
 .button-group-1 ul {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    position: absolute;
-    left: 33%;
-    bottom: 8%;
+    display: inline-block; text-align: center;
+    margin-left: auto; margin-right: auto;
+    position: absolute; left: 28%; bottom: 8%;
 }
 
 .button-group-1 ul li {
-    display: inline;
-    padding: 22px;
+    display: inline; padding: 22px;
 }
 
 .button-group-1 ul li button {
     border: 1px solid #063146; border-radius: 10px; background: #063146;
-    padding: 5px;
-    box-shadow: 2px 2px #0a5275; font-size: 24px; font-family: "montserrat";
-    color: white; cursor: pointer;
-    transition: 0.3s ease;    
+    padding: 5px; box-shadow: 2px 2px #0a5275; font-size: 24px; font-family: "montserrat";
+    color: white; cursor: pointer; transition: 0.3s ease;    
 }
 
 .button-group-1 ul li button:hover {
-    border: 1px solid #042331;
-    background: #042331;
+    border: 1px solid #042331; background: #042331;
 }
 
 .button-group-2 ul {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    position: absolute;
-    left: 40%;
-    bottom: 8%;
+    text-align: center; margin-left: auto; margin-right: auto;
+    position: absolute; left: 35%; bottom: 8%;
 }
 
 .button-group-2 ul li {
-    display: inline;
-    padding: 22px;
+    display: inline; padding: 22px;
 }
 
 .button-group-2 ul li button {
     border: 1px solid #063146; border-radius: 10px; background: #063146;
-    padding: 5px;
-    box-shadow: 2px 2px #0a5275; font-size: 24px; font-family: "montserrat";
-    color: white; cursor: pointer;
-    transition: 0.3s ease;    
+    padding: 5px; box-shadow: 2px 2px #0a5275; font-size: 24px; font-family: "montserrat";
+    color: white; cursor: pointer; transition: 0.3s ease;    
 }
 
 .button-group-2 ul li button:hover {
-    border: 1px solid #042331;
-    background: #042331;
+    border: 1px solid #042331; background: #042331;
 }
 
 /* Canvas 1*/ 
 main #canvas-1 {
-    padding: 0;
-    margin: auto;
-    display: block;
-    width: 900px;
-    height: 500px;
-    position: absolute;
-    top: 0px;
-    bottom: -1%;
-    left: 0;
-    right: 0;
+    padding: 0; margin: auto; display: block; width: 900px; height: 480px;
+    position: absolute; top: 4%; bottom: 0%; left: 0; right: 0; z-index: -1;
 }
 
 /* Control positioning*/
 .control {
-    position: absolute;
-    top: 15%;
-    left: 35%;
+    position: absolute; top: 15%; left: 33%;
 }
 
 .control label{
-    color: white;
-    font-size: 24px;
-    margin: auto;
-    padding: 20px;
+    color: white; font-size: 24px; margin: auto; padding: 20px;
 }
 
-.control input {
-
+.control input{
+    margin-left: 10px;
 }
 
+#toggle {
+    width: 20px; height: 20px;
+}
