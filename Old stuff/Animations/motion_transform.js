@@ -20,7 +20,7 @@ function epicycles (x,  y, rotation, fourierTransform) {
         let prevy = y;
 
         let freq = fourierTransform[i].freq;
-        let radius = 1.5*fourierTransform[i].amp;         // scaled for nice appearance
+        let radius = 1.5*fourierTransform[i].amp;  // scaled for nice appearance
         let phase = fourierTransform[i].phase;
         x += radius*cos(freq*time + phase + rotation);
         y += radius*sin(freq*time + phase + rotation);
@@ -73,7 +73,6 @@ function setup() {
         }
         fourierSignalY = dft(signalY); 
         path = [];
-
     } 
 
     document.getElementById('cos-epoch').onmouseup = e => {
@@ -84,7 +83,6 @@ function setup() {
         }
         fourierSignalX = dft(signalX);
         path = [];
-
     } 
 
     document.getElementById('centralize').onclick = e => {
@@ -130,6 +128,4 @@ function draw() {
     if (path.length > 250){
         path.pop();
     }
-
-
 }   

@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" type="text/css" href="/DSP Final/CSS/slides-style.css">
     <script src="/DSP Final/Libraries/FontAwesome.js"></script>
+    <script src="/DSP Final/Libraries/p5.js"></script>
+    <script src="/DSP Final/Animations/fourier1.js"></script>
+    <script src="/DSP Final/Animations/slide4.js"></script>
 </head>
 
 
@@ -40,6 +43,23 @@
             <h1>Discrete Fourier Transform</h1>
         </div>
         
+        <div class="control">
+            <label for="slider">Sine Epoch: </label>
+            <input type="range" min="0" max="1.57" value="1" step="0.01" id="sine-epoch">
+
+            <label for="slider">Cosine Epoch: </label>
+            <input type="range" min="0" max="1.57" value="1" step="0.01" id="cosine-epoch">
+        </div>
+
+        <!-- Canvas -->
+        <div id="canvas-1"></div>
+
+        <div class="button-group-2">
+            <ul>
+                <li><button type="button" id="doubleEpicycle">Double Epicycle</button></li>
+                <li><button type="button" id="singleEpicycle">Single Epicycle</button></li>
+            </ul>
+        </div>
     </main>
 </body>
 
