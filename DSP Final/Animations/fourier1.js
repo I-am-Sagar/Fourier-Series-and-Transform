@@ -19,6 +19,5 @@ function dft (x) {
     
         X[k] = { real, imag, freq, amp, phase };
     }
-
     return X;
 }
